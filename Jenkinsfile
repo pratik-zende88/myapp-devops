@@ -13,7 +13,21 @@ pipeline {
             steps {
                 echo 'Task Tracker application code downloaded successfully!'
                 sh 'ls -la'
-                sh 'node --version || true'
+                sh 'docker --version'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                echo 'Building Task Tracker Docker image...'
+                sh 'docker build -t task-tracker:latest ./app'
+            }
+        }
+
+        stage('Verify Image') {
+            steps {
+                echo 'Verifying Docker image...'
+                sh 'docker images task-tracker'
             }
         }
     }
