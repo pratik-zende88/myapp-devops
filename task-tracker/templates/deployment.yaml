@@ -46,3 +46,5 @@ spec:
                 secretKeyRef:
                   name: task-tracker-db-secret
                   key: DB_PASSWORD
+            - name: DB_SSL
+              value: "true"
