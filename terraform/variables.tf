@@ -21,3 +21,10 @@ variable "node_instance_type" {
   type        = string
   default     = "c7i-flex.large"
 }
+
+variable "db_password" {
+  description = "Password for the Task Tracker PostgreSQL database"
+  type        = string
+  sensitive   = true
+  nullable    = false
+}

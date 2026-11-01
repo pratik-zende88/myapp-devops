@@ -9,3 +9,5 @@ node_modules/
 
 # Secrets
 .env
+# App dependencies
+app/node_modules/
