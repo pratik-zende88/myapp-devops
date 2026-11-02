@@ -62,7 +62,18 @@ app.post('/tasks', async (req, res) => {
 async function startServer() {
     try {
         await pool.query('SELECT 1');
+
         console.log('PostgreSQL connection successful');
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS tasks (
+                id SERIAL PRIMARY KEY,
+                title VARCHAR(255) NOT NULL,
+                completed BOOLEAN NOT NULL DEFAULT FALSE
+            )
+        `);
+
+        console.log('Tasks table is ready');
 
         app.listen(PORT, '0.0.0.0', () => {
             console.log(`Server running on port ${PORT}`);
